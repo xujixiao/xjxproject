@@ -3,8 +3,7 @@ apply plugin: 'me.tatarka.retrolambda'
 // add plugin
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = '1.0.1'
-
+version = '1.0.2'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -159,9 +158,9 @@ bintray {
         issueTrackerUrl = 'https://github.com/xujixiao'
         publicDownloadNumbers = true
         version {
-            name = '1.0.1'
+            name = '1.0.2'
             desc = '工具库'
-            vcsTag = '1.0.1'
+            vcsTag = '1.0.2'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
