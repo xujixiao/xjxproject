@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.base.lib.R;
 import com.base.lib.base.entity.ICommonEntity;
+import com.base.lib.databinding.CommonLayoutBinding;
+import com.base.lib.databinding.CommonListLayoutBinding;
 import com.base.lib.utils.RecycleViewDivider;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.List;
  *
  * xujixiao      15:14    1.0        Create
  */
-public abstract class CommonBaseListActivity<P extends BasePresenter> extends BaseListActivity<P> {
+public abstract class CommonBaseListActivity<P extends BasePresenter,B extends CommonListLayoutBinding> extends BaseListActivity<P,B> {
     private List<ICommonEntity> mEntityList = new ArrayList<>();
 
     @Override

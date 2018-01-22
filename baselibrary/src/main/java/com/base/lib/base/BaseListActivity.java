@@ -19,14 +19,14 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.BaseListActivity.java
- *
+ * <p>
  * Date: 2017/12/4 15:36
  * Description:
  * History:
- *
+ * <p>
  * xujixiao      15:36    1.0        Create
  */
-public abstract class BaseListActivity<P extends BasePresenter> extends SActivity<P, CommonListLayoutBinding> implements IViewHolder, IItemClick {
+public abstract class BaseListActivity<P extends BasePresenter, B extends CommonListLayoutBinding> extends SActivity<P, B> implements IViewHolder, IItemClick {
 
     protected BaseRecycleAdapter mAdapter;
 
