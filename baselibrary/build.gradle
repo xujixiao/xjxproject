@@ -37,6 +37,17 @@ android {
     dataBinding {
         enabled = true
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
 
 }
 
@@ -58,27 +69,18 @@ dependencies {
     compile 'com.trello.rxlifecycle2:rxlifecycle:+'
     compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
-    //轮播图
-    compile 'com.bigkoo:convenientbanner:2.0.5'
     //图片工具
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //自定义圆角的ImageView
-    compile 'com.makeramen:roundedimageview:2.3.0'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     //解决方法数量超过65536
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
     // Arouter替换成最新版本, 需要注意的是api
     // 要与compiler匹配使用，均使用最新版可以保证兼容,在app模块中还有配置
     compile 'com.alibaba:arouter-api:1.2.4'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     compile 'com.jcodecraeer:xrecyclerview:1.5.2'
-//    compile project(':umeng')
-
 }
-
-
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
