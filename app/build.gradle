@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+def releaseTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+8"))
+}
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+
+        applicationId "com.ancient.dimension"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion 21
+        versionCode 100000
+        versionName "1.0.0"
+        multiDexEnabled true
+
+        buildConfigField("boolean", "ANCIENT_DIMENSION_LIVE", "true");
+        buildConfigField("boolean", "ANCIENT_DIMENSION_DEV", "false");
+        buildConfigField("boolean", "ANCIENT_DIMENSION_TEST", "false");
+
+        //打开jackOptions的配置  jdk1.8需要的配置
+//        jackOptions {
+//            enabled true
+//        }
+
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'x86' //, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+
+
+        }
+
+        /*腾讯短视频的要求*/
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a"
+//        }
+
+        /*Aroute配置*/
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'aliasKey'
+            keyPassword '666666'
+            storeFile file('keystore.jks')
+            storePassword '666666'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            buildConfigField("boolean", "ANCIENT_DIMENSION_LIVE", "true");
+            buildConfigField("boolean", "ANCIENT_DIMENSION_DEV", "false");
+            buildConfigField("boolean", "ANCIENT_DIMENSION_TEST", "false");
+            zipAlignEnabled false
+            // 是否进行混淆
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+
+    }
+
+
+
+    dataBinding {
+        enabled = true
+    }
+
+    //防止编译的时候oom、GC
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    lintOptions {
+        //lint发现错误时是否退出Gradle构建
+        abortOnError false
+        checkReleaseBuilds false
+//      防止在发布的时候出现因MissingTranslation导致Build Failed!
+        disable 'Missing  Translation', 'ExtraTranslation'
+        disable 'MissingTranslation'
+    }
+}
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile project(':baselibrary')
+    //滚动选择器
+    compile 'com.contrarywind:Android-PickerView:3.2.7'
+}
