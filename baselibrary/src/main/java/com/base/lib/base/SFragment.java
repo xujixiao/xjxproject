@@ -17,11 +17,11 @@ import com.base.lib.databinding.CommonLayoutBinding;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.SActivity.java
- * Author: xujixiao
+ *
  * Date: 2017/12/25 10:32
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      10:32    1.0        Create
  */
 public abstract class SFragment<P extends BasePresenter, B extends ViewDataBinding> extends BaseFragment {

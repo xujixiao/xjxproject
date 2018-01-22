@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+// add plugin
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+version = '1.0.1'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -69,6 +74,102 @@ dependencies {
     compile 'com.alibaba:arouter-api:1.2.4'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     compile 'com.jcodecraeer:xrecyclerview:1.5.2'
-    compile project(':umeng')
+//    compile project(':umeng')
 
 }
+
+
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "UTF-8"
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+group = 'com.xjxtools'
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+            groupId 'com.xjxtools' //自己定义的组名
+            artifactId 'baselibrary'
+
+            name 'baselibrary'
+            description '工具库'
+            url 'https://github.com/xujixiao'
+            inceptionYear '2016'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/xujixiao'
+                url 'https://github.com/xujixiao'
+
+            }
+            developers {
+                developer {
+                    name 'xujixiao'
+                    email '1107313740@qq.com'
+                }
+            }
+        }
+
+    }
+}
+
+// Bintray
+
+//获取local.propertes的信息
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    publish = true
+    configurations = ['archives']
+    pkg {
+        //填入 bintray 上对应的 package 信息
+        repo = 'maven'
+        name = 'xjxtools'
+        vcsUrl = 'https://github.com/xujixiao'
+        websiteUrl = 'https://github.com/xujixiao'
+        licenses = ['Apache-2.0']
+        issueTrackerUrl = 'https://github.com/xujixiao'
+        publicDownloadNumbers = true
+        version {
+            name = '1.0.1'
+            desc = '工具库'
+            vcsTag = '1.0.1'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+task findConventions << {
+    println project.getConvention()
+}
+//gradlew install
+/*gradlew bintrayUpload*/

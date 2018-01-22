@@ -1,7 +1,7 @@
 package com.base.lib.utils;
 
 /*****************************************************
- * author: xujixiao
+ *
  * time: 2017/7/31 10:32
  * name: com.wzdai.baselibrary.utils
  * email: xujixiao@wzdai.com

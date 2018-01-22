@@ -8,11 +8,11 @@ import android.view.View;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.viewentity.TitleViewEntity.java
- * Author: xujixiao
+ *
  * Date: 2017/12/25 10:06
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      10:06    1.0        Create
  */
 public class TitleViewEntity {

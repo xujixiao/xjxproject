@@ -14,11 +14,11 @@ import android.view.View;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.utils.RecycleViewDivider.java
- * Author: xujixiao
+ *
  * Date: 2017/12/27 18:01
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      18:01    1.0        Create
  */
 public class RecycleViewDivider extends RecyclerView.ItemDecoration {

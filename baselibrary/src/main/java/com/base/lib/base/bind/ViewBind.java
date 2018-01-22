@@ -6,12 +6,12 @@ import android.view.View;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.wzdai.fin.utils.bind.ViewBind.java
- * Author: xujixiao
+ *
  * Email: xujixiao@wzdai.com
  * Date: 2017/6/29 16:53
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      16:53    1.0        Create
  */
 public class ViewBind {

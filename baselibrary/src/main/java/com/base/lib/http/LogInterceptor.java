@@ -9,9 +9,9 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 
 /**
- * @desc:
- * @time: by 2017/12/20.
- * @author: by RobinYu
+ *
+ *  by 2017/12/20.
+ *  by RobinYu
  */
 
 public class LogInterceptor implements Interceptor {

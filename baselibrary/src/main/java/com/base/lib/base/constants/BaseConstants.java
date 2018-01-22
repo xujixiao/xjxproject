@@ -3,11 +3,11 @@ package com.base.lib.base.constants;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.ancient.dimension.base.constants.BaseConstants.java
- * Author: xujixiao
+ *
  * Date: 2017/12/25 16:12
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      16:12    1.0        Create
  */
 public class BaseConstants {

@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.ancient.dimension.ui.message.activity.CallMeActivity.java
- * Author: xujixiao
+ *
  * Date: 2017/12/25 15:14
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      15:14    1.0        Create
  */
 public abstract class CommonBaseListFragment<P extends BasePresenter> extends BaseListFragment<P> {

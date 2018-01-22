@@ -4,8 +4,8 @@ import android.util.Log;
 
 
 /**
- * @desc:
- * @time: by 2017/12/11.
+ *
+ *  by 2017/12/11.
  */
 public final class LogUtils {
 

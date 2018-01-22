@@ -6,11 +6,11 @@ import android.widget.ImageView;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.bind.ImageViewBind.java
- * Author: xujixiao
+ *
  * Date: 2017/12/25 10:12
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      10:12    1.0        Create
  */
 public class ImageViewBind {

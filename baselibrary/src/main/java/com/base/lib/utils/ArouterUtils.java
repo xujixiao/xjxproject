@@ -17,12 +17,12 @@ import java.util.Map;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.utils.ArouterUtils.java
- * Author: xujixiao
+ *
  * Email: xujixiao@wzdai.com
  * Date: 2017/11/30 16:27
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      16:27    1.0        Create
  */
 public class ArouterUtils {

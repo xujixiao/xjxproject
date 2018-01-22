@@ -7,8 +7,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 
-import com.base.lib.BuildConfig;
-
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
@@ -87,7 +85,7 @@ public class AppUtils {
             e.printStackTrace();
 //            ErrorUtils.uploadException(context, "AppUtils.getVersionName", e);
         }
-        return BuildConfig.VERSION_NAME;
+        return null;
     }
 
     /**

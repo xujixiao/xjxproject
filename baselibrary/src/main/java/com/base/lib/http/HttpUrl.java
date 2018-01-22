@@ -1,6 +1,5 @@
 package com.base.lib.http;
 
-import com.base.lib.BuildConfig;
 import com.base.lib.bean.BaseBean;
 
 import java.util.HashMap;
@@ -23,11 +22,11 @@ import retrofit2.http.Query;
 public interface HttpUrl {
 
 
-    boolean isLive = !BuildConfig.DEBUG;
+    boolean isLive = true;
 
-    boolean isDev = BuildConfig.DEBUG;
+    boolean isDev = true;
 
-    boolean isTest = BuildConfig.DEBUG;
+    boolean isTest = true;
 
     /**
      * ------------------基础数据接口请求地址--------------------

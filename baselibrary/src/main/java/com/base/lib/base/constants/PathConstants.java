@@ -3,11 +3,11 @@ package com.base.lib.base.constants;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.ancient.dimension.base.constants.PathConstants.java
- * Author: xujixiao
+ *
  * Date: 2017/12/25 10:52
  * Description:
  * History:
- * <Author>      <Time>    <version>    <desc>
+ *
  * xujixiao      10:52    1.0        Create
  */
 public class PathConstants {
