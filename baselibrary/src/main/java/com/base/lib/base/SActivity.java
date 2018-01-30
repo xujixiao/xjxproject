@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.ContentFrameLayout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 
@@ -13,17 +14,18 @@ import com.base.lib.base.entity.ChangeAnimType;
 import com.base.lib.base.viewentity.ExceptionViewEntity;
 import com.base.lib.base.viewentity.TitleViewEntity;
 import com.base.lib.databinding.CommonLayoutBinding;
+import com.base.lib.databinding.CommonTitleLayoutBinding;
 import com.base.lib.utils.CheckDoubleUtils;
 import com.base.lib.utils.InputMethodUtil;
 
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.SActivity.java
- *
+ * <p>
  * Date: 2017/12/25 10:32
  * Description:
  * History:
- *
+ * <p>
  * xujixiao      10:32    1.0        Create
  */
 public abstract class SActivity<P extends BasePresenter, B extends ViewDataBinding> extends BaseActivity {
@@ -31,6 +33,8 @@ public abstract class SActivity<P extends BasePresenter, B extends ViewDataBindi
     protected P mvpPresenter;
     protected TitleViewEntity mTitleViewEntity;
     protected ExceptionViewEntity mExceptionViewEntity;
+    protected CommonLayoutBinding commonLayoutBinding;
+    public CommonTitleLayoutBinding mCommonTitleLayoutBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +43,13 @@ public abstract class SActivity<P extends BasePresenter, B extends ViewDataBindi
         if (mvpPresenter != null) {
             mvpPresenter.attachView(this);
         }
-        CommonLayoutBinding commonLayoutBinding = DataBindingUtil.setContentView(this, R.layout.common_layout);
+        mCommonTitleLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.common_title_layout, null, false);
+        commonLayoutBinding = DataBindingUtil.setContentView(this, R.layout.common_layout);
+        commonLayoutBinding.llParent.addView(mCommonTitleLayoutBinding.getRoot(), 0);
+
         mTitleViewEntity = new TitleViewEntity();
         initTitle();
+        mCommonTitleLayoutBinding.setViewEntity(mTitleViewEntity);
         mExceptionViewEntity = new ExceptionViewEntity();
         mExceptionViewEntity.imageId.set(R.mipmap.ic_launcher);
         mExceptionViewEntity.text.set("网络无信号");
@@ -112,7 +120,7 @@ public abstract class SActivity<P extends BasePresenter, B extends ViewDataBindi
         mTitleViewEntity.titleLeftClick.set(v -> finish());
         mTitleViewEntity.rightLayoutVisible.set(false);
         mTitleViewEntity.backIconVisible.set(true);
-        mTitleViewEntity.title.set("测试");
+        mTitleViewEntity.title.set("测试标题");
     }
 
 

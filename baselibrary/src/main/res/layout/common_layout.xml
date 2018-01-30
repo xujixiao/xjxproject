@@ -5,36 +5,38 @@
 
         <variable
             name="ExceptionViewEntity"
-            type="com.base.lib.base.viewentity.ExceptionViewEntity"/>
+            type="com.base.lib.base.viewentity.ExceptionViewEntity" />
 
         <variable
             name="TitleViewEntity"
-            type="com.base.lib.base.viewentity.TitleViewEntity"/>
+            type="com.base.lib.base.viewentity.TitleViewEntity" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto"
-                  android:id="@+id/ll_parent"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ll_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <include
-            layout="@layout/common_title_layout"
-            app:ViewEntity="@{TitleViewEntity}"/>
+        <!--<include-->
+            <!--android:id="@+id/in_title_layout"-->
+            <!--layout="@layout/common_title_layout"-->
+            <!--app:ViewEntity="@{TitleViewEntity}" />-->
 
         <FrameLayout
+            android:id="@+id/fl_title_below_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <FrameLayout
                 android:id="@+id/fl_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
             <include
                 layout="@layout/common_exception_layout"
-                app:ViewEntity="@{ExceptionViewEntity}"/>
+                app:ViewEntity="@{ExceptionViewEntity}" />
         </FrameLayout>
 
     </LinearLayout>

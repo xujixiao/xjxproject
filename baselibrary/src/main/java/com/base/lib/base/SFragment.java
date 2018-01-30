@@ -12,16 +12,17 @@ import com.base.lib.R;
 import com.base.lib.base.viewentity.ExceptionViewEntity;
 import com.base.lib.base.viewentity.TitleViewEntity;
 import com.base.lib.databinding.CommonLayoutBinding;
+import com.base.lib.databinding.CommonTitleLayoutBinding;
 
 
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.SActivity.java
- *
+ * <p>
  * Date: 2017/12/25 10:32
  * Description:
  * History:
- *
+ * <p>
  * xujixiao      10:32    1.0        Create
  */
 public abstract class SFragment<P extends BasePresenter, B extends ViewDataBinding> extends BaseFragment {
@@ -29,17 +30,21 @@ public abstract class SFragment<P extends BasePresenter, B extends ViewDataBindi
     protected P mvpPresenter;
     protected TitleViewEntity mTitleViewEntity;
     protected ExceptionViewEntity mExceptionViewEntity;
+    protected CommonTitleLayoutBinding mCommonTitleLayoutBinding;
+    protected CommonLayoutBinding commonLayoutBinding;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mvpPresenter = createPresenter();
         super.onCreate(savedInstanceState);
-
-        CommonLayoutBinding commonLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.common_layout, container, false);
+        mCommonTitleLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.common_title_layout, null, false);
+        commonLayoutBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.common_layout, container, false);
         commonLayoutBinding.llParent.setClickable(true);
         mTitleViewEntity = new TitleViewEntity();
         initTitle();
+        mCommonTitleLayoutBinding.setViewEntity(mTitleViewEntity);
+        commonLayoutBinding.llParent.addView(mCommonTitleLayoutBinding.getRoot(), 0);
         mExceptionViewEntity = new ExceptionViewEntity();
         mExceptionViewEntity.imageId.set(R.mipmap.ic_launcher);
         mExceptionViewEntity.text.set("网络无信号");

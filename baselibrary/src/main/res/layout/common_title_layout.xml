@@ -5,7 +5,7 @@
 
         <variable
             name="ViewEntity"
-            type="com.base.lib.base.viewentity.TitleViewEntity"/>
+            type="com.base.lib.base.viewentity.TitleViewEntity" />
     </data>
 
     <LinearLayout
@@ -22,20 +22,22 @@
             android:visible="@{ViewEntity.titleLayoutVisible}">
 
             <ImageView
+                android:id="@+id/iv_title_left_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:imageId="@{ViewEntity.backIconId}"
                 android:onClick="@{ViewEntity.titleLeftClick}"
-                android:visible="@{ViewEntity.backIconVisible}"/>
+                android:visible="@{ViewEntity.backIconVisible}" />
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:text="@{ViewEntity.title}"
                 android:textColor="#666565"
-                android:textSize="18dp"/>
+                android:textSize="18dp" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -46,24 +48,26 @@
                 android:visible="@{ViewEntity.rightLayoutVisible}">
 
                 <ImageView
+                    android:id="@+id/iv_title_right_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:imageId="@{ViewEntity.rightImageId}"
-                    />
+                    android:imageId="@{ViewEntity.rightImageId}" />
 
                 <TextView
+                    android:id="@+id/tv_title_right_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{ViewEntity.rightText}"
                     android:textColor="#666565"
-                    android:textSize="@dimen/size_14"/>
+                    android:textSize="@dimen/size_14" />
             </FrameLayout>
         </RelativeLayout>
 
 
         <View
+            android:id="@+id/view_title_bottom_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:visible="@{ViewEntity.titleLayoutVisible}"/>
+            android:visible="@{ViewEntity.titleLayoutVisible}" />
     </LinearLayout>
 </layout>

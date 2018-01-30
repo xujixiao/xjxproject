@@ -4,20 +4,27 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.ancient.dimension.R;
+import com.ancient.dimension.databinding.ActMainBinding;
+import com.ancient.dimension.ui.presenter.TestPresenter;
 import com.base.lib.base.BaseActivity;
+import com.base.lib.base.BasePresenter;
+import com.base.lib.base.SActivity;
 
 
-public class MainActivity extends BaseActivity {
-
+public class MainActivity extends SActivity<TestPresenter, ActMainBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataBindingUtil.setContentView(this, R.layout.act_webview_layout);
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    protected TestPresenter createPresenter() {
+        return null;
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.act_main;
+    }
 }
