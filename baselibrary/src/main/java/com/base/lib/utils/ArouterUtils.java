@@ -17,12 +17,12 @@ import java.util.Map;
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.utils.ArouterUtils.java
- *
- * Email: xujixiao@wzdai.com
+ * <p>
+ * <p>
  * Date: 2017/11/30 16:27
  * Description:
  * History:
- *
+ * <p>
  * xujixiao      16:27    1.0        Create
  */
 public class ArouterUtils {
@@ -52,7 +52,7 @@ public class ArouterUtils {
     }
 
 
-    public static void goWithAnim(String path, int enterAnim, int outAnim,Activity activity) {
+    public static void goWithAnim(String path, int enterAnim, int outAnim, Activity activity) {
         ARouter.getInstance().build(path).withTransition(enterAnim, outAnim).navigation(activity);
     }
 
@@ -94,26 +94,26 @@ public class ArouterUtils {
         ARouter.getInstance().build(path).navigation(activity, new NavCallback() {
             @Override
             public void onArrival(Postcard postcard) {
-                Log.d(LogConstants.AROUTER, postcard.toString());
+                Log.d("arouter", postcard.toString());
             }
 
             @Override
             public void onFound(Postcard postcard) {
                 super.onFound(postcard);
-                Log.d(LogConstants.AROUTER, postcard.toString());
+                Log.d("arouter", postcard.toString());
             }
 
             @Override
             public void onLost(Postcard postcard) {
                 super.onLost(postcard);
-                Log.d(LogConstants.AROUTER, postcard.toString());
+                Log.d("arouter", postcard.toString());
 
             }
 
             @Override
             public void onInterrupt(Postcard postcard) {
                 super.onInterrupt(postcard);
-                Log.d(LogConstants.AROUTER, postcard.toString());
+                Log.d("arouter", postcard.toString());
             }
         });
     }

@@ -50,7 +50,11 @@ import java.util.regex.Pattern;
 
 public class Tool {
 
-    // unicode转中文
+    /**
+     * unicode转中文
+     * @param unicodeStr
+     * @return
+     */
     public static String decode(String unicodeStr) {
         if (unicodeStr == null) {
             return null;
@@ -76,6 +80,11 @@ public class Tool {
         return retBuf.toString();
     }
 
+    /**
+     * 中文转Unicode
+     * @param str
+     * @return
+     */
     public static String chinaToUnicode(String str) {
         String result = "";
         for (int i = 0; i < str.length(); i++) {

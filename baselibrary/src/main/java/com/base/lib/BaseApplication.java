@@ -9,27 +9,42 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.tencent.bugly.Bugly;
 import com.tencent.smtt.sdk.QbSdk;
 
+import java.util.HashMap;
+
 public class BaseApplication extends Application {
 
     //获取到主线程的上下文
     public static Context context;
+    public final static String BUGLY_APP_ID = "bugly_app_id";
+    public final static String BUGLY_APP_SECRET = "bugly_app_secret";
+    public final static String BUGLY_DEBUG = "bugly_debug";
+    public final static String AROUTE_DEBUG = "aroute_debug";
+    protected HashMap<String, String> paramsMap = new HashMap<>();
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        initParamsMap();
         initArouter();
-        initX5webview();
-        Bugly.init(getApplicationContext(), "d25aaa36ed", true);
-        Bugly.setIsDevelopmentDevice(this, true);
+        initX5WebView();
+        initBugly();
     }
 
+    private void initBugly() {
+        Bugly.init(getApplicationContext(), paramsMap.get(BUGLY_APP_ID), Boolean.valueOf(paramsMap.get(BUGLY_DEBUG)));
+        Bugly.setIsDevelopmentDevice(this, Boolean.valueOf(paramsMap.get(BUGLY_DEBUG)));
+    }
+
+    protected void initParamsMap() {
+
+    }
 
     /**
      * 初始化阿里的路由框架
      */
     private void initArouter() {
-        if (true) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+        if (Boolean.valueOf(paramsMap.get(AROUTE_DEBUG))) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog();     // 打印日志
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
@@ -43,7 +58,7 @@ public class BaseApplication extends Application {
         MultiDex.install(this);
     }
 
-    public void initX5webview() {
+    public void initX5WebView() {
         //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
             @Override

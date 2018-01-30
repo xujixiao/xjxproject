@@ -128,7 +128,7 @@ public class BasePresenter<T> {
     private void requestWithArray(HashMap<String, String> map, List<String> attachment, String cmd, io.reactivex.functions.Consumer<BaseBean> consumer, io.reactivex.functions.Consumer<Throwable> error) {
         BaseActivity activity = ((IView) mvpView).obtainActivity();
         if (!checkNetwork(activity)) {
-            ToastUtils.showShortToast(activity, NETWORK_FAILURE);
+            ToastUtils.showShortToast(NETWORK_FAILURE);
         }
         map.put("version", "1.0.0");
         map.put("timestamp", DateUtils.format(System.currentTimeMillis()));
@@ -139,7 +139,7 @@ public class BasePresenter<T> {
     private void request(HashMap<String, String> map, String cmd, io.reactivex.functions.Consumer<BaseBean> consumer, io.reactivex.functions.Consumer<Throwable> error) {
         BaseActivity activity = ((IView) mvpView).obtainActivity();
         if (!checkNetwork(activity)) {
-            ToastUtils.showShortToast(activity, NETWORK_FAILURE);
+            ToastUtils.showShortToast(NETWORK_FAILURE);
         }
         map.put("version", "1.0.0");
         map.put("timestamp", DateUtils.format(System.currentTimeMillis()));
@@ -151,7 +151,7 @@ public class BasePresenter<T> {
     private void upload(File file, String cmd, String userId, io.reactivex.functions.Consumer<BaseBean> consumer, io.reactivex.functions.Consumer<Throwable> error) {
         BaseActivity activity = ((IView) mvpView).obtainActivity();
         if (!checkNetwork(activity)) {
-            ToastUtils.showShortToast(activity, NETWORK_FAILURE);
+            ToastUtils.showShortToast(NETWORK_FAILURE);
         }
         HashMap<String, String> map = new HashMap<>();
         map.put("version", "1.0.0");

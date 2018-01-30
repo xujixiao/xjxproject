@@ -3,8 +3,8 @@ package com.base.lib.utils;
 /*****************************************************
  *
  * time: 2017/7/31 10:32
- * name: com.wzdai.baselibrary.utils
- * email: xujixiao@wzdai.com
+ *
+ *
  * modifytime:
  * description:检查是否是快速点击
  * ***************************************************

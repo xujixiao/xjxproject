@@ -28,7 +28,7 @@
     <uses-feature android:name="android.hardware.camera.flash"/>
 
     <application
-        android:name="com.base.lib.BaseApplication"
+        android:name=".ui.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/logo"
