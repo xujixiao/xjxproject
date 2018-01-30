@@ -9,7 +9,6 @@ import android.util.Log;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.base.lib.base.constants.LogConstants;
 
 import java.util.HashMap;
 import java.util.Map;

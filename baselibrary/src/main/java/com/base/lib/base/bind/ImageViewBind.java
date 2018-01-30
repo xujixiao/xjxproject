@@ -3,7 +3,6 @@ package com.base.lib.base.bind;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 
 /**
  * Copyright (C), 2011-2017
@@ -26,7 +25,7 @@ public class ImageViewBind {
         if (imageSrc instanceof Integer) {
             imageView.setImageResource((int) imageSrc);
         } else if (imageSrc instanceof String) {
-            Glide.with(imageView.getContext()).load(imageSrc).into(imageView);
+//            Glide.with(imageView.getContext()).load(imageSrc).into(imageView);
         }
     }
 }

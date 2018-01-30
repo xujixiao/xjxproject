@@ -188,7 +188,7 @@ public class BaseActivity extends RxAppCompatActivity {
 
         if (TextUtils.isEmpty(userId)) {
             //用户id
-            ToastUtils.showLongToast(context, "您尚未登录！");
+            ToastUtils.showShortToast("您尚未登录！");
             return false;
         }
 

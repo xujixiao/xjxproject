@@ -5,8 +5,8 @@ import android.util.Log;
 
 import com.base.lib.base.BaseActivity;
 import com.base.lib.bean.BaseBean;
-import com.base.lib.tools.AppUtils;
 import com.base.lib.tools.DateUtils;
+import com.base.lib.utils.AppUtil;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.File;
@@ -47,7 +47,7 @@ public class Api {
      */
     private static HashMap<String, String> getMap(String sign, Context context) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("Body.RequestId", AppUtils.getIMEI(context));
+        map.put("Body.RequestId", AppUtil.getIMEI(context));
         map.put("Body.RequestTime", DateUtils.getFormatTimeFromTimestamp(System.currentTimeMillis(), DateUtils.FORMAT_DATE_TIME_ALL));
         map.put("Body.Signature", sign);
         map.put("Body.Language", "zh-CN");
@@ -91,7 +91,7 @@ public class Api {
                         Request request = chain.request()
                                 .newBuilder()
                                 //用于认识不同的会话，建议使用Guid
-                                .addHeader("RequestId", AppUtils.getIMEI(context))//AppUtils.getIMEI(MyApplication.context)
+                                .addHeader("RequestId", AppUtil.getIMEI(context))//AppUtils.getIMEI(MyApplication.context)
                                 //客户端的请求时间，格式：yyyy-MM-dd HH:mm:ss
                                 .addHeader("RequestTime", DateUtils.getFormatTimeFromTimestamp(System.currentTimeMillis(), DateUtils.FORMAT_DATE_TIME_ALL))
                                 //根据请求体，生成数字签名，用来确保请求包没有被篡改。使用MD5
