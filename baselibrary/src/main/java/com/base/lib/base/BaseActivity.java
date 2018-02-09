@@ -9,15 +9,16 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.base.lib.R;
+import com.base.lib.base.constants.BaseLogConstant;
 import com.base.lib.dialog.ConfirmDialog;
 import com.base.lib.dialog.EmptyDialog;
-import com.base.lib.manager.MyActivityManager;
+import com.base.lib.manager.ActivityManager;
 import com.base.lib.tools.PreferenceUtils;
 import com.base.lib.tools.ToastUtils;
-import com.base.lib.utils.LogUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**
@@ -39,10 +40,8 @@ public class BaseActivity extends RxAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //记录每一个Activity
-        MyActivityManager.getInstance().pushOneActivity(this);
-
+        ActivityManager.getInstance().pushOneActivity(this);
         initLoadingColor();
     }
 
@@ -241,6 +240,6 @@ public class BaseActivity extends RxAppCompatActivity {
     }
 
     public void handleError(Throwable throwable) {
-        LogUtils.d(throwable.getMessage());
+        Log.d(BaseLogConstant.tag, throwable.getMessage());
     }
 }

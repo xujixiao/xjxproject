@@ -14,6 +14,7 @@ import com.base.lib.base.adapter.IHolderType;
 import com.base.lib.base.adapter.IViewHolder;
 import com.base.lib.base.listener.IItemClick;
 import com.base.lib.databinding.CommonListLayoutBinding;
+import com.base.lib.utils.RecycleViewDivider;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 /**
@@ -34,13 +35,13 @@ public abstract class BaseListActivity<P extends BasePresenter, B extends Common
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initAdapter();
+        if (showRecycleViewDecoration()) {
+            mBinding.xrv.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.VERTICAL, R.drawable.ic_loading_rotate));
+        }
     }
 
-    /**
-     * 添加测试数据的方法
-     */
-    protected void addData() {
-
+    protected boolean showRecycleViewDecoration() {
+        return true;
     }
 
     @Override
@@ -65,7 +66,6 @@ public abstract class BaseListActivity<P extends BasePresenter, B extends Common
             @Override
             public void onLoadMore() {
                 loadMoreData();
-                addData();
                 mBinding.xrv.postDelayed(() -> mBinding.xrv.loadMoreComplete(), 2000);
             }
         });

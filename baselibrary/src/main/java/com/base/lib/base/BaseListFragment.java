@@ -15,16 +15,17 @@ import com.base.lib.base.adapter.IHolderType;
 import com.base.lib.base.adapter.IViewHolder;
 import com.base.lib.base.listener.IItemClick;
 import com.base.lib.databinding.CommonListLayoutBinding;
+import com.base.lib.utils.RecycleViewDivider;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 /**
  * Copyright (C), 2011-2017
  * FileName: com.base.lib.base.BaseListActivity.java
- *
+ * <p>
  * Date: 2017/12/4 15:36
  * Description:
  * History:
- *
+ * <p>
  * xujixiao      15:36    1.0        Create
  */
 public abstract class BaseListFragment<P extends BasePresenter> extends SFragment<P, CommonListLayoutBinding> implements IViewHolder, IItemClick {
@@ -35,13 +36,13 @@ public abstract class BaseListFragment<P extends BasePresenter> extends SFragmen
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initAdapter();
+        if (showRecycleViewDecoration()) {
+            mBinding.xrv.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.ic_loading_rotate));
+        }
     }
 
-    /**
-     * 添加测试数据的方法
-     */
-    protected void addData() {
-
+    protected boolean showRecycleViewDecoration() {
+        return true;
     }
 
     @Override
@@ -66,7 +67,6 @@ public abstract class BaseListFragment<P extends BasePresenter> extends SFragmen
             @Override
             public void onLoadMore() {
                 loadMoreData();
-                addData();
                 mBinding.xrv.postDelayed(() -> mBinding.xrv.loadMoreComplete(), 2000);
             }
         });

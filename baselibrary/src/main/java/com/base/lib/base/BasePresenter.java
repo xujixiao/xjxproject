@@ -70,7 +70,7 @@ public class BasePresenter<T> {
                         resultListener.onResponse(baseBean);
                     } else {
                         resultListener.onError(new Exception(baseBean.msg));
-                        iView.handleError(new Exception(baseBean.getMsg()));
+                        iView.handleError(new Exception(baseBean.msg));
                     }
                 }
             }
@@ -107,7 +107,7 @@ public class BasePresenter<T> {
                         resultListener.onResponse(baseBean);
                     } else {
                         resultListener.onError(new Exception(baseBean.msg));
-                        iView.handleError(new Exception(baseBean.getMsg()));
+                        iView.handleError(new Exception(baseBean.msg));
                     }
                 }
             }
@@ -173,7 +173,7 @@ public class BasePresenter<T> {
                         resultListener.onResponse(baseBean);
                     } else {
                         resultListener.onError(new Exception(baseBean.msg));
-                        iView.handleError(new Exception(baseBean.getMsg()));
+                        iView.handleError(new Exception(baseBean.msg));
                     }
                 }
             }

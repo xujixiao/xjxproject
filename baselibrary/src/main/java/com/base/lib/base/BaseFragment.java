@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.base.lib.R;
+import com.base.lib.base.constants.BaseLogConstant;
 import com.base.lib.dialog.ConfirmDialog;
 import com.base.lib.dialog.EmptyDialog;
-import com.base.lib.utils.LogUtils;
 
 /**
  * Created by kec on 2017/8/3.
@@ -233,7 +234,7 @@ public class BaseFragment extends Fragment {
     }
 
     public void handleError(Throwable throwable) {
-        LogUtils.d(throwable.getMessage());
+        Log.d(BaseLogConstant.tag, throwable.getMessage());
     }
 
 }

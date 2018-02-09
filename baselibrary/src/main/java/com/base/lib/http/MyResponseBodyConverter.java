@@ -3,8 +3,8 @@ package com.base.lib.http;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.base.lib.base.constants.BaseLogConstant;
 import com.base.lib.bean.BaseBean;
-import com.base.lib.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -47,18 +47,18 @@ public class MyResponseBodyConverter<T> implements Converter<ResponseBody, T> {
         try {
             httpStatus = gson.fromJson(response, BaseBean.class);
         } catch (Exception e) {
-            LogUtils.d("接口请求异常MyResponseBodyConverter");
+            Log.d(BaseLogConstant.tag, "接口请求异常MyResponseBodyConverter");
         }
 
-        String resultCode = httpStatus.getStatus();
+        String resultCode = httpStatus.status;
 
         //接口返回错误
         if ("false".equals(resultCode)) {
             value.close();
-            if (!TextUtils.isEmpty(httpStatus.getMsg())) {
-                throw new ApiException(httpStatus.getStatus(), httpStatus.getMsg());
+            if (!TextUtils.isEmpty(httpStatus.msg)) {
+                throw new ApiException(httpStatus.status, httpStatus.msg);
             } else {
-                LogUtils.d("未知错误----");
+                Log.d(BaseLogConstant.tag,"未知错误----");
             }
         }
 

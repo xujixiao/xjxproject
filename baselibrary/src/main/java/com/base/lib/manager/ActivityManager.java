@@ -9,18 +9,18 @@ import java.util.Stack;
  * Created by kec on 2017/8/20.
  */
 
-public class MyActivityManager {
+public class ActivityManager {
 
-    private static MyActivityManager instance;
+    private static ActivityManager instance;
     private Stack<Activity> activityStack;//activity栈
 
-    private MyActivityManager() {
+    private ActivityManager() {
     }
 
     //单例模式
-    public static MyActivityManager getInstance() {
+    public static ActivityManager getInstance() {
         if (instance == null) {
-            instance = new MyActivityManager();
+            instance = new ActivityManager();
         }
         return instance;
     }
@@ -31,7 +31,7 @@ public class MyActivityManager {
             activityStack = new Stack<Activity>();
         }
         activityStack.add(actvity);
-        Log.d("MyActivityManager ", "size = " + activityStack.size());
+        Log.d("ActivityManager ", "size = " + activityStack.size());
     }
 
     //获取栈顶的activity，先进后出原则

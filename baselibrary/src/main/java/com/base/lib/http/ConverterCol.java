@@ -7,7 +7,6 @@ import com.base.lib.base.BaseActivity;
 import com.base.lib.base.BaseFragment;
 import com.base.lib.bean.BaseBean;
 import com.base.lib.dialog.ConfirmDialog;
-import com.base.lib.utils.LogUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;

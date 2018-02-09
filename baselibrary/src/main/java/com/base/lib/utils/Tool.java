@@ -809,7 +809,6 @@ public class Tool {
         if (pinfo != null) {
             for (int i = 0; i < pinfo.size(); i++) {
                 String pn = pinfo.get(i).packageName;
-                // LogUtils.e("pn = "+pn);
                 if (pn.equalsIgnoreCase(packageName)) {
                     return true;
                 }
