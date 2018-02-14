@@ -865,3 +865,14 @@ public static java.lang.String TABLENAME;
 
 #腾讯短视频编辑sdk的混淆配置
 -keep class com.tencent.** { *; }
+
+#glide的最新版本的混淆文件4.6.1
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+# for DexGuard only
+-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
