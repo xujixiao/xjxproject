@@ -8,6 +8,9 @@ buildscript {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        maven {
+            url "https://dl.bintray.com/xjxpersontest/maven"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -37,6 +40,9 @@ allprojects {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        maven {
+            url "https://dl.bintray.com/xjxpersontest/maven"
+        }
     }
 }
 
@@ -44,10 +50,10 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext {
-    compileSdkVersion = 25
-    buildToolsVersion = "25.0.0"
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.1"
     minSdkVersion = 15
     targetSdkVersion = 25
-    support = "25.0.0"
+    support = "25.3.1"
     espresso_core = "2.2.2"
 }

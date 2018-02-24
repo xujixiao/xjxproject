@@ -1,6 +1,7 @@
 package com.ancient.dimension.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.ancient.dimension.R;
 import com.ancient.dimension.databinding.ActMainBinding;
@@ -13,6 +14,12 @@ public class MainActivity extends SActivity<TestPresenter, ActMainBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mBinding.tvBuglyTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TestListActivity.start(MainActivity.this);
+            }
+        });
     }
 
     @Override

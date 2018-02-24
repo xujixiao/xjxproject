@@ -14,9 +14,11 @@ import com.base.lib.base.adapter.IHandleHolder;
 import com.base.lib.base.adapter.IHolderType;
 import com.base.lib.base.adapter.IViewHolder;
 import com.base.lib.base.listener.IItemClick;
-import com.base.lib.databinding.CommonListLayoutBinding;
+import com.base.lib.databinding.SmartCommonListLayoutBinding;
 import com.base.lib.utils.RecycleViewDivider;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 /**
  * Copyright (C), 2011-2017
@@ -28,7 +30,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
  * <p>
  * xujixiao      15:36    1.0        Create
  */
-public abstract class BaseListFragment<P extends BasePresenter> extends SFragment<P, CommonListLayoutBinding> implements IViewHolder, IItemClick {
+public abstract class BaseListFragment<P extends BasePresenter> extends SFragment<P, SmartCommonListLayoutBinding> implements IViewHolder, IItemClick {
 
     protected BaseRecycleAdapter mAdapter;
 
@@ -37,7 +39,7 @@ public abstract class BaseListFragment<P extends BasePresenter> extends SFragmen
         super.onActivityCreated(savedInstanceState);
         initAdapter();
         if (showRecycleViewDecoration()) {
-            mBinding.xrv.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.ic_loading_rotate));
+            mBinding.rcv.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.VERTICAL, R.drawable.basic_dialog));
         }
     }
 
@@ -47,33 +49,39 @@ public abstract class BaseListFragment<P extends BasePresenter> extends SFragmen
 
     @Override
     protected int getLayoutId() {
-        return R.layout.common_list_layout;
+        return R.layout.smart_common_list_layout;
     }
 
     private void initAdapter() {
         mAdapter = new BaseRecycleAdapter();
         mAdapter.installViewHolder(this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        mBinding.xrv.setLayoutManager(layoutManager);
-        mBinding.xrv.setAdapter(mAdapter);
-        mBinding.xrv.setLoadingMoreEnabled(true);
-        mBinding.xrv.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                refreshNetData();
-                mBinding.xrv.postDelayed(() -> mBinding.xrv.refreshComplete(), 2000);
-            }
+        mBinding.rcv.setLayoutManager(layoutManager);
+        mBinding.rcv.setAdapter(mAdapter);
 
-            @Override
-            public void onLoadMore() {
+        mBinding.srl.setOnRefreshListener(new OnRefreshListener() {
+            public void onRefresh(RefreshLayout refreshLayout) {
+                refreshNetData();
+            }
+        });
+        mBinding.srl.setOnLoadMoreListener(new OnLoadMoreListener() {
+            public void onLoadMore(RefreshLayout refreshLayout) {
                 loadMoreData();
-                mBinding.xrv.postDelayed(() -> mBinding.xrv.loadMoreComplete(), 2000);
             }
         });
         mAdapter.notifyDataSetChanged();
     }
 
     public abstract int getItemLayoutId(int viewType);
+
+    public void loadDataComplete() {
+        try {
+            mBinding.srl.finishRefresh();
+            mBinding.srl.finishLoadMore();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void callBack(IHolderType entity, ViewDataBinding binding, int position) {
