@@ -1,1 +1,1 @@
-include ':baselibrary', ':app'//,':umeng'
+include ':baselibrary', ':app',':novate'//,':umeng'
