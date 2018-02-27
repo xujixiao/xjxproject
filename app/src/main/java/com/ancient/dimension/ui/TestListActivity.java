@@ -50,7 +50,6 @@ public class TestListActivity extends BaseListActivity<TestPresenter, SmartCommo
 
     @Override
     public void refreshNetData() {
-        toast("刷新完成");
         loadDataComplete();
     }
 

@@ -13,6 +13,8 @@
             android:id="@+id/tv_bugly_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/size_36"
+            android:textColor="@color/global_grey_bth_color"
             android:text="测试bugly" />
 
     </android.support.constraint.ConstraintLayout>

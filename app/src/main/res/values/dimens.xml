@@ -1,19 +1,19 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!--字体-->
-    <dimen name="text_1">10sp</dimen>
-    <dimen name="text_2">12sp</dimen>
-    <dimen name="text_3">14sp</dimen>
-    <dimen name="text_4">16sp</dimen>
-    <dimen name="text_5">18sp</dimen>
-    <dimen name="size_9">19sp</dimen>
-    <dimen name="size_10">10sp</dimen>
-    <dimen name="size_12">12sp</dimen>
-    <dimen name="size_14">14sp</dimen>
-    <dimen name="size_16">16sp</dimen>
-    <dimen name="size_18">18sp</dimen>
-    <dimen name="size_36">36sp</dimen>
+    <!--&lt;!&ndash;字体&ndash;&gt;-->
+    <!--<dimen name="text_1">10sp</dimen>-->
+    <!--<dimen name="text_2">12sp</dimen>-->
+    <!--<dimen name="text_3">14sp</dimen>-->
+    <!--<dimen name="text_4">16sp</dimen>-->
+    <!--<dimen name="text_5">18sp</dimen>-->
+    <!--<dimen name="size_9">19sp</dimen>-->
+    <!--<dimen name="size_10">10sp</dimen>-->
+    <!--<dimen name="size_12">12sp</dimen>-->
+    <!--<dimen name="size_14">14sp</dimen>-->
+    <!--<dimen name="size_16">16sp</dimen>-->
+    <!--<dimen name="size_18">18sp</dimen>-->
+    <!--<dimen name="size_36">36sp</dimen>-->
 
 
     <dimen name="margin_8dp">8dp</dimen>

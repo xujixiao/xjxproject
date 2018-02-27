@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.xjxtools:baselibrary-1.0.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/bf2fe27ebb12ac0410d79f865986c4006ab614d9/output/jars/libs/tbs_sdk_thirdapp_v3.1.0.1034_43100_sharewithdownload_obfs_20170301_182143.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/bf2fe27ebb12ac0410d79f865986c4006ab614d9/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/bf2fe27ebb12ac0410d79f865986c4006ab614d9/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.xjxtools/baselibrary/1.0.7/c61de2655de59e7aee317e0955c52754c81add37/baselibrary-1.0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
