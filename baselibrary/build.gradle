@@ -65,7 +65,7 @@ dependencies {
 //    compile 'com.github.bumptech.glide:glide:4.6.1'
     compile 'com.android.support:appcompat-v7:25.3.1'//版本随意（必须）
     compile 'com.android.support:recyclerview-v7:25.3.1'
-//    compile project(':novate')//网络框架
+    compile project(':novate')//网络框架
 }
 
 task sourcesJar(type: Jar) {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="500dp"
+    android:layout_height="400dp"
+    android:orientation="vertical">
+
+    <com.white.progressview.HorizontalProgressView
+        android:id="@+id/progress100"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:progress="100"
+        app:progressReachColor="@color/colorPrimary"
+        app:progressTextColor="@color/colorPrimary"
+        app:progressTextVisible="true" />
+
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="下载进度"
+        android:textSize="15dp" />
+</LinearLayout>
