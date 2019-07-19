@@ -7,8 +7,12 @@ import android.os.Bundle;
 
 import com.ancient.dimension.R;
 import com.ancient.dimension.databinding.TestListItemLayoutBinding;
+import com.ancient.dimension.ui.entity.JsonEntity;
 import com.ancient.dimension.ui.entity.ListTestEntity;
+import com.ancient.dimension.ui.entity.TopicEntity;
+import com.ancient.dimension.ui.presenter.MainPresenter;
 import com.ancient.dimension.ui.presenter.TestPresenter;
+import com.ancient.dimension.ui.presenter.TopicPresenter;
 import com.base.lib.base.BaseListActivity;
 import com.base.lib.base.adapter.IHolderType;
 import com.base.lib.databinding.SmartCommonListLayoutBinding;
@@ -20,9 +24,11 @@ import java.util.List;
  * Created by 11073 on 2018/2/24.
  */
 
-public class TestListActivity extends BaseListActivity<TestPresenter, SmartCommonListLayoutBinding> {
+public class TestListActivity extends BaseListActivity<TopicPresenter, SmartCommonListLayoutBinding>
+        implements TopicPresenter.View {
 
-    private List mList = new ArrayList();
+    private List<TopicEntity> mList = new ArrayList();
+    private int page = 1;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, TestListActivity.class);
@@ -31,16 +37,23 @@ public class TestListActivity extends BaseListActivity<TestPresenter, SmartCommo
     }
 
     @Override
+    protected TopicPresenter createPresenter() {
+        return new TopicPresenter();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mList.add(new ListTestEntity());
-        mList.add(new ListTestEntity());
-        mList.add(new ListTestEntity());
-        mList.add(new ListTestEntity());
-        mList.add(new ListTestEntity());
-        mList.add(new ListTestEntity());
+        mTitleViewEntity.title.set("每日一笑");
         mAdapter.refreshData(mList);
+        mvpPresenter.getTopic(this, page, 10);
+    }
 
+    @Override
+    public void onResult(List<TopicEntity> list) {
+        loadDataComplete();
+        mList.addAll(list);
+        mAdapter.refreshData(mList);
     }
 
     @Override
@@ -50,18 +63,20 @@ public class TestListActivity extends BaseListActivity<TestPresenter, SmartCommo
 
     @Override
     public void refreshNetData() {
-        loadDataComplete();
+        page = 1;
+        mvpPresenter.getTopic(this, page, 10);
     }
 
     @Override
     public void loadMoreData() {
-        loadDataComplete();
+        page++;
+        mvpPresenter.getTopic(this, page, 10);
     }
 
     @Override
     public <E extends IHolderType, B extends ViewDataBinding> void bindData(E entity, int position, B binding) {
         if (binding instanceof TestListItemLayoutBinding) {
-            ((TestListItemLayoutBinding) binding).setEntity((ListTestEntity) entity);
+            ((TestListItemLayoutBinding) binding).setEntity((TopicEntity) entity);
         }
     }
 }

@@ -10,18 +10,14 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.ancient.dimension.TagConstants;
-import com.ancient.dimension.ui.entity.BaseEntity;
 import com.ancient.dimension.ui.entity.JsonEntity;
-import com.ancient.dimension.ui.entity.ListEntity;
 import com.base.lib.base.BasePresenter;
 import com.base.lib.base.view.IView;
 import com.base.lib.tools.ToastUtils;
 import com.google.gson.Gson;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
-import com.tamic.novate.callback.RxDownCallback;
 import com.tamic.novate.callback.RxFileCallBack;
-import com.tamic.novate.callback.RxResultCallback;
 import com.tamic.novate.callback.RxStringCallback;
 
 import java.io.File;
@@ -38,37 +34,11 @@ public class MainPresenter extends BasePresenter<MainPresenter.view> {
 
         void onProgress(int progress);
 
-        void onDownloadCompelte();
+        void onDownloadComplete();
     }
 
-    public void getTopic(Context context) {
-//        53eafc8ba3cc21c2bddb4bf18f0554f2
-        String time = System.currentTimeMillis();
-        new Novate.Builder(context)
-                .baseUrl("http://v.juhe.cn/")
-                .build()
-                .rxGet("joke/content/list.php?key=53eafc8ba3cc21c2bddb4bf18f0554f2&page=2&pagesize=10&sort=asc&time="+time,
-                        new HashMap<>(), new RxResultCallback<BaseEntity<ListEntity>>() {
-                            @Override
-                            public void onNext(Object tag, int code, String message, BaseEntity<ListEntity> response) {
-                                Log.d(TagConstants.TAG, response.reason);
 
-                            }
-
-                            @Override
-                            public void onError(Object tag, Throwable e) {
-                                Log.d(TagConstants.TAG, e.getMessage().toString());
-
-                            }
-
-                            @Override
-                            public void onCancel(Object tag, Throwable e) {
-
-                            }
-                        });
-    }
-
-    public void gianInfo(Context context) {
+    public void gainInfo(Context context) {
 //        http://www.ds06ji.com:15780/back/api.php?app_id=122000055
         new Novate.Builder(context)
                 .baseUrl("http://www.ds06ji.com:15780/")
@@ -107,7 +77,7 @@ public class MainPresenter extends BasePresenter<MainPresenter.view> {
                     public void onNext(Object tag, File file) {
                         Log.d("xujixiao", file.getAbsolutePath() + "--------------" + file.getAbsoluteFile().getName());
                         Log.d(TagConstants.TAG, file.getName());
-                        mvpView.onDownloadCompelte();
+                        mvpView.onDownloadComplete();
                         install(context, file.getAbsoluteFile().getPath());
                     }
 

@@ -5,17 +5,55 @@
 
         <variable
             name="entity"
-            type="com.ancient.dimension.ui.entity.ListTestEntity" />
+            type="com.ancient.dimension.ui.entity.TopicEntity" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="测试列表item" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:text="@{entity.content}"
+            android:textColor="@color/black_333333"
+            android:textSize="@dimen/size_16"
+            tools:text="测试数据" />
 
-    </android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginRight="@dimen/margin_20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更新时间:"
+                android:textSize="@dimen/margin_13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="@{entity.updatetime}"
+                android:textSize="@dimen/margin_13dp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/text_5"
+            android:layout_marginTop="@dimen/text_5"
+            android:layout_marginRight="@dimen/text_5"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:background="@color/gray_8f8f8f" />
+    </LinearLayout>
 </layout>

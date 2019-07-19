@@ -1,6 +1,7 @@
 package com.ancient.dimension.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -11,33 +12,41 @@ import com.ancient.dimension.ui.dialog.DownloadDialog;
 import com.ancient.dimension.ui.entity.JsonEntity;
 import com.ancient.dimension.ui.entity.Person;
 import com.ancient.dimension.ui.presenter.MainPresenter;
-import com.ancient.dimension.ui.presenter.TestPresenter;
 import com.base.lib.base.SActivity;
 import com.base.lib.tools.ToastUtils;
-import com.tencent.smtt.utils.LogFileUtils;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.SaveListener;
 
 
 public class MainActivity extends SActivity<MainPresenter, ActMainBinding> implements MainPresenter.view {
 
     private DownloadDialog mDownloadDialog;
+    private boolean isDownload = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mTitleViewEntity.titleLayoutVisible.set(false);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!isDownload) {
+                    TestListActivity.start(MainActivity.this);
+                    finish();
+                }
+            }
+        }, 2000);
         mBinding.tvBuglyTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                TestListActivity.start(MainActivity.this);
-//                mvpPresenter.gianInfo(MainActivity.this);
-                mvpPresenter.getTopic(MainActivity.this);
+                TestListActivity.start(MainActivity.this);
+//                mvpPresenter.gainInfo(MainActivity.this);
             }
         });
+//        mvpPresenter.gainInfo(MainActivity.this);
         mDownloadDialog = new DownloadDialog(this);
 //        mDownloadDialog.show();
 //        mDownloadDialog.setProgressBar(89);
@@ -55,13 +64,6 @@ public class MainActivity extends SActivity<MainPresenter, ActMainBinding> imple
 //                }
 //            }
 //        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
     }
 
     @Override
@@ -125,7 +127,7 @@ public class MainActivity extends SActivity<MainPresenter, ActMainBinding> imple
     }
 
     @Override
-    public void onDownloadCompelte() {
+    public void onDownloadComplete() {
         mDownloadDialog.dismiss();
     }
 }
